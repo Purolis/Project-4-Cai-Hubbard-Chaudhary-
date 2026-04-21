@@ -46,3 +46,161 @@ super().__init__()
             Torch.nn.ReLU(),
             Torch.nn.Linear(300, 10)
         )
+
+-----mehhh2---- 98.5 on test set, 84.5 on dev set
+
+batch_size = 169
+num_epochs = 112
+learning_rate = 0.000776
+weight_decay = 0.0069
+
+super().__init__()
+        self.model = Torch.nn.Sequential( #building layers
+            Torch.nn.Conv2d(in_channels=1, out_channels=32,kernel_size=3, padding=1), #1 input channels bcus greyscale channels for image, kernel size of 3 is a 3x3 filter
+            Torch.nn.ReLU(),
+            Torch.nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.MaxPool2d(kernel_size=2),
+            Torch.nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.MaxPool2d(kernel_size=2),
+            Torch.nn.Conv2d(in_channels=128, out_channels=64, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.Flatten(), #flatten layers now that we're done
+            Torch.nn.Linear(64*7*7, 300), #fully connected flatten, 
+            Torch.nn.ReLU(),
+            Torch.nn.Linear(300, 10)
+        )
+
+
+----prettyOkay---- 98.33, 94.7
+
+num_epochs = 112
+learning_rate = 0.000776
+weight_decay = 0.0069
+
+self.model = Torch.nn.Sequential( #building layers
+            Torch.nn.Conv2d(in_channels=1, out_channels=64,kernel_size=3, padding=1), #1 input channels bcus greyscale channels for image, kernel size of 3 is a 3x3 filter
+            Torch.nn.ReLU(),
+            Torch.nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.MaxPool2d(kernel_size=2),
+            Torch.nn.Conv2d(in_channels=128, out_channels=32, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.MaxPool2d(kernel_size=2),
+            Torch.nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.Flatten(), #flatten layers now that we're done
+            Torch.nn.Linear(64*7*7, 300), #fully connected flatten, 
+            Torch.nn.ReLU(),
+            Torch.nn.Linear(300, 10)
+            
+        )
+
+----yerr---- 98.62, 89.4
+
+num_epochs = 121
+learning_rate = 0.000707
+weight_decay = 0.00609
+
+self.model = Torch.nn.Sequential( #building layers
+            Torch.nn.Conv2d(in_channels=1, out_channels=64,kernel_size=3, padding=1), #1 input channels bcus greyscale channels for image, kernel size of 3 is a 3x3 filter
+            Torch.nn.ReLU(),
+            Torch.nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.MaxPool2d(kernel_size=2),
+            Torch.nn.Conv2d(in_channels=128, out_channels=128, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.MaxPool2d(kernel_size=2),
+            Torch.nn.Conv2d(in_channels=128, out_channels=64, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.Flatten(), #flatten layers now that we're done
+            Torch.nn.Linear(64*7*7, 300), #fully connected flatten, 
+            Torch.nn.ReLU(),
+            Torch.nn.Linear(300, 10)
+            
+        )
+
+
+
+----niceeee---- 98.73, 89.47
+
+num_epochs = 121
+learning_rate = 0.000707
+weight_decay = 0.00609
+
+self.model = Torch.nn.Sequential( #building layers
+    Torch.nn.Conv2d(in_channels=1, out_channels=64,kernel_size=3, padding=1), #1 input channels bcus greyscale channels for image, kernel size of 3 is a 3x3 filter
+    Torch.nn.ReLU(),
+    Torch.nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, padding=1), 
+    Torch.nn.ReLU(),
+    Torch.nn.MaxPool2d(kernel_size=2),
+    Torch.nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, padding=1), 
+    Torch.nn.ReLU(),
+    Torch.nn.Conv2d(in_channels=256, out_channels=128, kernel_size=3, padding=1), 
+    Torch.nn.ReLU(),
+    Torch.nn.MaxPool2d(kernel_size=2),
+    Torch.nn.Conv2d(in_channels=128, out_channels=64, kernel_size=3, padding=1), 
+    Torch.nn.ReLU(),
+    Torch.nn.Flatten(), #flatten layers now that we're done
+    Torch.nn.Linear(64*7*7, 300), #fully connected flatten, 
+    Torch.nn.ReLU(),
+    Torch.nn.Linear(300, 10)
+    
+)
+
+
+
+----goatedfr---- 98.67, 94.7
+
+num_epochs = 112
+learning_rate = 0.000669
+weight_decay = 0.00569
+
+self.model = Torch.nn.Sequential( #building layers
+            Torch.nn.Conv2d(in_channels=1, out_channels=64,kernel_size=3, padding=1), #1 input channels bcus greyscale channels for image, kernel size of 3 is a 3x3 filter
+            Torch.nn.ReLU(),
+            Torch.nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.MaxPool2d(kernel_size=2),
+            Torch.nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.Conv2d(in_channels=256, out_channels=169, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.MaxPool2d(kernel_size=2),
+            Torch.nn.Conv2d(in_channels=169, out_channels=64, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.Flatten(), #flatten layers now that we're done
+            Torch.nn.Linear(64*7*7, 300), #fully connected flatten, 
+            Torch.nn.ReLU(),
+            Torch.nn.Linear(300, 10)
+            
+        )
+
+
+
+----isAight---- 98.75, 89.4
+
+num_epochs = 112
+learning_rate = 0.000669
+weight_decay = 0.005
+
+self.model = Torch.nn.Sequential( #building layers
+            Torch.nn.Conv2d(in_channels=1, out_channels=64,kernel_size=3, padding=1), #1 input channels bcus greyscale channels for image, kernel size of 3 is a 3x3 filter
+            Torch.nn.ReLU(),
+            Torch.nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.MaxPool2d(kernel_size=2),
+            Torch.nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.Conv2d(in_channels=256, out_channels=169, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.MaxPool2d(kernel_size=2),
+            Torch.nn.Conv2d(in_channels=169, out_channels=64, kernel_size=3, padding=1), 
+            Torch.nn.ReLU(),
+            Torch.nn.Flatten(), #flatten layers now that we're done
+            Torch.nn.Linear(64*7*7, 300), #fully connected flatten, 
+            Torch.nn.ReLU(),
+            Torch.nn.Linear(300, 10)
+            
+        )

@@ -33,10 +33,14 @@ def main():
         testData, batch_size=batchSize
     )
 
+  
+
 
     #----------------------------------------visualiz/analyze data------------------------------------
     #print("*****\nPREPARING MINIBATCHES")
     #prepare minibatches
+    batch_size = 128
+
     train_loader = Torch.utils.data.DataLoader(
         trainData, batch_size=batch_size)
     test_loader = Torch.utils.data.DataLoader(testData, batch_size=batch_size)
@@ -77,9 +81,9 @@ def main():
 
 
     #--------------------------------training------------------------------------------------
-    num_epochs = 169
-    learning_rate = 0.000776
-    weight_decay = 0.0069
+    num_epochs = 112
+    learning_rate = 0.000669
+    weight_decay = 0.005
     criterion = Torch.nn.CrossEntropyLoss()
     optimizer = Torch.optim.Adam(
         model.parameters(), lr=learning_rate, weight_decay=weight_decay)
@@ -109,7 +113,6 @@ def main():
     # plt.ylabel("Training loss")
     # plt.show()
 
-    print(f"Final loss: {train_loss_list[-1]}")
 
     #--------------------------------------testing----------------------------------------
     print("****************\nTESTING STARTING\n******************")
