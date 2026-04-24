@@ -1,3 +1,6 @@
+#refs: https://docs.pytorch.org/docs/stable/generated/torch.optim.lr_scheduler.StepLR.html
+
+
 import torch as Torch
 import torchvision
 import numpy as np
@@ -82,11 +85,13 @@ def main():
 
     #--------------------------------training------------------------------------------------
     num_epochs = 112
-    learning_rate = 0.000669
+    learning_rate = 0.00069
     weight_decay = 0.005
     criterion = Torch.nn.CrossEntropyLoss()
     optimizer = Torch.optim.Adam(
         model.parameters(), lr=learning_rate, weight_decay=weight_decay)
+    
+    scheduler = Torch.optim.lr_scheduler.StepLR(optimizer, step_size=23, gamma=0.69) #lr*gamma every step_size epochs
 
 
     #train
@@ -106,7 +111,9 @@ def main():
             optimizer.step()
             train_loss += loss.item()
         train_loss_list.append(train_loss / len(train_loader))
+        
         print(f"Training loss = {train_loss_list[-1]}")
+        scheduler.step()
     print("\n\n*****************\nTRAINING DONE\n****************")
     # plt.plot(range(1, num_epochs + 1), train_loss_list)
     # plt.xlabel("Number of epochs")

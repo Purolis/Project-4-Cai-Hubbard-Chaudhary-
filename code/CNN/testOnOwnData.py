@@ -6,7 +6,7 @@ import torch as Torch
 
 def test_on_group_data(model=None):
     image_dir = './img'
-    model_name = "mehhh.pt" #change this for testing an individual model
+    model_name = "goatedfrfr.pt" #change this for testing an individual model
 
     total = 0
     correct = 0
@@ -41,7 +41,7 @@ def test_on_group_data(model=None):
     #predict
     for filename in os.listdir(image_dir):
         if filename.endswith((".png", ".jpg", ".jpeg")):
-            img_path = os.path.join(image_dir, filename)
+            img_path = f"{image_dir}\{filename}"
             
             #load images
             img = Image.open(img_path)
