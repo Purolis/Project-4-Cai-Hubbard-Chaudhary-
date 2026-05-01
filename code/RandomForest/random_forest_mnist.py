@@ -1,4 +1,5 @@
 import torchvision
+import joblib
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
 
@@ -6,20 +7,20 @@ from sklearn.metrics import accuracy_score, classification_report, confusion_mat
 def main():
     # ---------------------------------------- load data ----------------------------------------
     trainData = torchvision.datasets.MNIST(
-        root='.MNIST/train',
+        root='MNIST/train',
         train=True,
         download=True
     )
 
     testData = torchvision.datasets.MNIST(
-        root='.MNIST/test',
+        root='MNIST/test',
         train=False,
         download=True
     )
 
     print("We have loaded our datasets")
 
-    # ---------------------------------------- visualize/analyze data ----------------------------------------
+    # ---------------------------------------- prepare data ----------------------------------------
     X_train = trainData.data.numpy()
     y_train = trainData.targets.numpy()
 
@@ -36,9 +37,9 @@ def main():
     print("******** RANDOM FOREST MODEL ********")
 
     model = RandomForestClassifier(
-        n_estimators=500,
+        n_estimators=200,
         criterion="entropy",
-        random_state=42,
+        random_state=2,
         n_jobs=-1
     )
 
@@ -46,6 +47,10 @@ def main():
     print("\n\n*****************\nTRAINING STARTING\n****************")
     model.fit(X_train, y_train)
     print("\n\n*****************\nTRAINING DONE\n****************")
+
+    # save model
+    joblib.dump(model, "random_forest_mnist_model.pkl")
+    print("Random Forest model saved successfully")
 
     # ---------------------------------------- testing ----------------------------------------
     print("****************\nTESTING STARTING\n******************")
