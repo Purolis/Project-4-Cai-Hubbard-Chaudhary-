@@ -6,7 +6,7 @@ import torch as Torch
 
 def test_on_group_data(model=None):
     image_dir = './img'
-    model_name = "goatedfrfr.pt" #change this for testing an individual model
+    model_name = "submission.pt" #change this for testing an individual model
 
     total = 0
     correct = 0
